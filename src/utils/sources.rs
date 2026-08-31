@@ -1,21 +1,11 @@
 use std::collections::HashMap;
 
-
-
-
-
-
-
-
-
-
-
 #[derive(Debug, serde::Deserialize)]
 pub struct SourceInfo {
     #[serde(rename = "name")]
     pub _name: String,
     pub info: SourceDetails,
-    pub kind: HashMap<String, String>
+    pub kind: HashMap<String, String>,
 }
 
 #[allow(unused)]
@@ -25,13 +15,21 @@ pub struct SourceDetails {
     pub github: Vec<String>,
 }
 
-
-
-
-
-
-
-#[derive(Default, Debug, Clone, Hash, PartialEq, Eq, PartialOrd, Ord, speedy::Readable, speedy::Writable, serde::Deserialize, serde::Serialize, schemars::JsonSchema)]
+#[derive(
+    Default,
+    Debug,
+    Clone,
+    Hash,
+    PartialEq,
+    Eq,
+    PartialOrd,
+    Ord,
+    speedy::Readable,
+    speedy::Writable,
+    serde::Deserialize,
+    serde::Serialize,
+    schemars::JsonSchema,
+)]
 pub enum Source {
     #[default]
     #[serde(rename = "bootstrap")]
@@ -57,12 +55,11 @@ pub enum Source {
     #[serde(rename = "tabler")]
     Tabler,
     #[serde(rename = "thesvg")]
-    TheSvg
+    TheSvg,
 }
 
 impl std::str::FromStr for Source {
     type Err = String;
-
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         match s.to_lowercase().as_str() {
             "bootstrap" => Ok(Self::Bootstrap),
@@ -83,7 +80,6 @@ impl std::str::FromStr for Source {
 }
 
 impl Source {
-    
     pub fn get_info(&self) -> Result<SourceInfo, Error> {
         Ok(match self {
             Self::Bootstrap => serde_json::from_slice(include_bytes!("../../json/bootstrap.json"))?,
@@ -95,24 +91,19 @@ impl Source {
             Self::Lucide => serde_json::from_slice(include_bytes!("../../json/lucide.json"))?,
             Self::Phosphor => serde_json::from_slice(include_bytes!("../../json/phosphor.json"))?,
             Self::RemixIcon => serde_json::from_slice(include_bytes!("../../json/remixicon.json"))?,
-            Self::SimpleIcons => serde_json::from_slice(include_bytes!("../../json/simple-icons.json"))?,
+            Self::SimpleIcons => {
+                serde_json::from_slice(include_bytes!("../../json/simple-icons.json"))?
+            }
             Self::Tabler => serde_json::from_slice(include_bytes!("../../json/tabler.json"))?,
             Self::TheSvg => serde_json::from_slice(include_bytes!("../../json/thesvg.json"))?,
         })
     }
-
 }
-
-
-
-
-
 
 #[derive(Debug, thiserror::Error)]
 pub enum Error {
     #[error(transparent)]
     JsonDeserializeError(#[from] serde_json::Error),
-
     #[error("embeded file not found: {0}")]
     FileNotFoundError(String),
 }

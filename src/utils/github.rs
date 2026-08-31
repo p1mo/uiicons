@@ -1,22 +1,13 @@
 use std::{
     fs::File,
-    io::{Read, Write, copy},
+    io::{copy, Read, Write},
     path::{Path, PathBuf},
 };
 
 use blake3::Hasher;
+use git2::{Direction, Remote};
 use reqwest::blocking::Client;
 use zip::ZipArchive;
-use git2::{Direction, Remote};
-
-
-
-
-
-
-
-
-
 
 pub fn latest_commit_sha(owner: &str, repo: &str) -> Result<String, git2::Error> {
     let url = format!("https://github.com/{owner}/{repo}.git");
@@ -33,12 +24,6 @@ pub fn latest_commit_sha(owner: &str, repo: &str) -> Result<String, git2::Error>
     Err(git2::Error::from_str("HEAD not found"))
 }
 
-
-
-
-
-
-
 pub fn download_extract_svg_at_sha(
     owner: &str,
     repo: &str,
@@ -52,10 +37,7 @@ pub fn download_extract_svg_at_sha(
     let url = format!("https://github.com/{owner}/{repo}/archive/{sha}.zip");
 
     // ---------- Download + hash ----------
-    let response = Client::new()
-        .get(&url)
-        .send()?
-        .error_for_status()?;
+    let response = Client::new().get(&url).send()?.error_for_status()?;
 
     let mut file = File::create(&zip_path)?;
     let mut hasher = Hasher::new();
@@ -82,17 +64,9 @@ pub fn download_extract_svg_at_sha(
     let svg_files = extract_svgs(&zip_path, &extract_dir)?;
 
     Ok((zip_path, hash, svg_files))
-
 }
 
-
-
-
-
-fn extract_svgs(
-    zip_path: &Path,
-    output_dir: &Path,
-) -> Result<Vec<PathBuf>, Error> {
+fn extract_svgs(zip_path: &Path, output_dir: &Path) -> Result<Vec<PathBuf>, Error> {
     let file = File::open(zip_path)?;
     let mut archive = ZipArchive::new(file)?;
     let mut extracted = Vec::new();
@@ -124,25 +98,15 @@ fn extract_svgs(
         copy(&mut entry, &mut out)?;
         extracted.push(output_path);
     }
-
     Ok(extracted)
 }
-
-
-
-
-
-
-
 
 #[derive(Debug, thiserror::Error)]
 pub enum Error {
     #[error("I/O error")]
     Io(#[from] std::io::Error),
-
     #[error("HTTP error")]
     Http(#[from] reqwest::Error),
-
     #[error("ZIP error")]
     Zip(#[from] zip::result::ZipError),
 }
