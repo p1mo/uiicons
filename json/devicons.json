@@ -1,0 +1,12 @@
+{
+    "name": "devicons",
+    "info": {
+        "website": "https://devicon.dev",
+        "github" : ["devicons", "devicon"]
+    },
+    "kind": {
+        "line": "public/icons/[NAME]/line.svg",
+        "default": "public/icons/[NAME]/default.svg",
+        "plain": "public/icons/[NAME]/plain.svg"
+    }
+}

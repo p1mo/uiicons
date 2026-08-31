@@ -1,0 +1,14 @@
+{
+    "name": "google-mdi",
+    "info": {
+        "website": "https://fonts.google.com/icons",
+        "github" : ["google", "material-design-icons"]
+    },
+    "kind": {
+        "default": "src/action/[SUB][NAME]/materialicons/24px.svg",
+        "outlined": "src/action/[SUB][NAME]/materialiconsoutlined/24px.svg",
+        "round": "src/action/[SUB][NAME]/materialiconsround/24px.svg",
+        "sharp": "src/action/[SUB][NAME]/materialiconssharp/24px.svg",
+        "twotone": "src/action/[SUB][NAME]/materialiconstwotone/24px.svg"
+    }
+}

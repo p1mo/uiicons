@@ -1,0 +1,10 @@
+{
+    "name": "bootstrap",
+    "info": {
+        "website": "https://icons.getbootstrap.com",
+        "github" : [ "twbs", "icons" ]
+    },
+    "kind": {
+        "default": "icons/[NAME].svg"
+    }
+}

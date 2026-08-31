@@ -1,0 +1,12 @@
+{
+    "name": "iconoir",
+    "info": {
+        "website": "https://iconoir.com",
+        "github" : ["iconoir-icons", "iconoir"]
+    },
+    "kind": {
+        "default": "icons/regular/[NAME].svg",
+        "solid": "icons/solid/[NAME].svg",
+        "regular": "icons/regular/[NAME].svg"
+    }
+}
