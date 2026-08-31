@@ -1,0 +1,10 @@
+{
+    "name": "remixicon",
+    "info": {
+        "website": "https://remixicon.com",
+        "github" : ["Remix-Design", "RemixIcon"]
+    },
+    "kind": {
+        "default": "icons/[SUB][NAME].svg"
+    }
+}

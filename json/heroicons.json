@@ -1,0 +1,12 @@
+{
+    "name": "heroicons",
+    "info": {
+        "website": "https://heroicons.com",
+        "github" : ["tailwindlabs", "heroicons"]
+    },
+    "kind": {
+        "default": "src/24/outline/[NAME].svg",
+        "outline": "src/24/outline/[NAME].svg",
+        "solid": "src/24/solid/[NAME].svg"
+    }
+}

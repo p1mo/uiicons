@@ -1,0 +1,12 @@
+{
+    "name": "thesvg",
+    "info": {
+        "website": "https://thesvg.org",
+        "github" : ["glincker", "thesvg"]
+    },
+    "kind": {
+        "color": "public/icons/[NAME]/color.svg",
+        "default": "public/icons/[NAME]/default.svg",
+        "mono": "public/icons/[NAME]/plain.svg"
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "name": "feather",
+    "info": {
+        "website": "https://feathericons.com",
+        "github" : ["feathericons", "feather"]
+    },
+    "kind": {
+        "default": "icons/[NAME].svg",
+        "filled": "icons/[NAME].svg"
+    }
+}

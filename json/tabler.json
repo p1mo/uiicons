@@ -1,0 +1,12 @@
+{
+    "name": "tabler",
+    "info": {
+        "website": "https://tabler.io",
+        "github" : ["tabler", "tabler-icons"]
+    },
+    "kind": {
+        "default": "icons/outline/[NAME].svg",
+        "filled": "icons/filled/[NAME].svg",
+        "outline": "icons/outline/[NAME].svg"
+    }
+}

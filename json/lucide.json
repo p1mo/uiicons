@@ -1,0 +1,10 @@
+{
+    "name": "lucide",
+    "info": {
+        "website": "https://lucide.dev",
+        "github" : ["lucide-icons", "lucide"]
+    },
+    "kind": {
+        "default": "icons/[NAME].svg"
+    }
+}

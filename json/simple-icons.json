@@ -1,0 +1,10 @@
+{
+    "name": "simple-icons",
+    "info": {
+        "website": "https://simpleicons.org",
+        "github" : ["simple-icons", "simple-icons"]
+    },
+    "kind": {
+        "default": "icons/[NAME].svg"
+    }
+}

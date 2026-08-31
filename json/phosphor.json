@@ -1,0 +1,16 @@
+{
+    "name": "phosphor",
+    "info": {
+        "website": "https://phosphoricons.com",
+        "github" : ["phosphor-icons", "core"]
+    },
+    "kind": {
+        "default": "assets/regular/[NAME]-regular.svg",
+        "bold": "assets/bold/[NAME]-bold.svg",
+        "duotone": "assets/duotone/[NAME]-duotone.svg",
+        "fill": "assets/fill/[NAME]-fill.svg",
+        "light": "assets/light/[NAME]-light.svg",
+        "regular": "assets/regular/[NAME]-regular.svg",
+        "thin": "assets/thin/[NAME]-thin.svg"
+    }
+}
