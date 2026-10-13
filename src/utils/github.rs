@@ -78,13 +78,13 @@ fn extract_svgs(zip_path: &Path, output_dir: &Path) -> Result<Vec<PathBuf>, Erro
             continue;
         }
 
-        let name = entry.name();
-        if !name.to_ascii_lowercase().ends_with(".svg") {
+        let name = entry.name()?.to_ascii_lowercase();
+        if !name.ends_with(".svg") {
             continue;
         }
 
         // GitHub archives look like: {repo}-{sha}/path/to/file.svg
-        let relative: PathBuf = Path::new(name).components().skip(1).collect();
+        let relative: PathBuf = Path::new(&name).components().skip(1).collect();
         if relative.as_os_str().is_empty() {
             continue;
         }
