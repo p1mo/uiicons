@@ -1,6 +1,12 @@
-<center><h1>UIIcons</h1></center>
-<center><h3>version: <code>0.1.0</code></h3></center>
+<center><h1>UI ICONS</h1></center>
 <center><h5>serve icons from various sources to the frontend</h5></center>
+<center>
+  <h3>
+    <a href="https://crates.io/crates/uiicons">
+      <img src="https://img.shields.io/crates/v/uiicons?style=flat-square">
+    </a>
+  </h3>
+</center>
 
 ### Features
 + [X] Embeded
@@ -8,6 +14,16 @@
 + [X] Parallel Icon finder for Large Icon Sets
 
 ### Example
+
+**Cargo.toml**
+```toml
+
+[build-dependencies]
+uiicons = { version = "*", features = ["build"] }
+
+[dependencies]
+uiicons = "*"
+```
 
 **build.rs**
 ```rust

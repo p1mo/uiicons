@@ -1,5 +1,15 @@
-//! # UIIcons
+//! # UI ICONS
+//! 
+//! #### serve icons from various sources to the frontend
 //!
+//! ```toml
+//! [build-dependencies]
+//! uiicons = { version = "*", features = ["build"] }
+//! 
+//! [dependencies]
+//! uiicons = "*"
+//! ```
+//! 
 //! **build.rs**
 //! ```rust, no_run
 //! uiicons::build().unwrap();
@@ -30,10 +40,12 @@ pub use holder::EmbededIcons;
 /// Icon Holder with all Icons ready to serve to your frontend
 macro_rules! embeded_icons {
     () => {
+
         EmbededIcons::load(include_bytes!(concat!(
             env!("OUT_DIR"),
-            "/../../../..",
-            "/uiicons/generated",
+            //"/../../../..",
+            "/uiicons",
+            "/generated",
             "/uiicons.bin",
         )))
     };
