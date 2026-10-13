@@ -35,14 +35,7 @@ fn builder_paths() -> Result<
     let output_path = PathBuf::from(std::env::var("OUT_DIR")?);
     let project_path = PathBuf::from(std::env::var("CARGO_MANIFEST_DIR")?);
 
-    let target_root = output_path
-        .ancestors()
-        .nth(4)
-        .expect("failed to determine current Cargo target directory")
-        .to_path_buf();
-
-    let profile_path = target_root.join(std::env::var("PROFILE").unwrap());
-    let crate_full_dir = profile_path.join("uiicons");
+    let crate_full_dir = output_path.join("uiicons");
 
     let repos = crate_full_dir.join("repositories");
     if !repos.exists() {
