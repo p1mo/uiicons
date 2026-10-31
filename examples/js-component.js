@@ -1,8 +1,8 @@
 class UiIconElement extends HTMLElement {  
 
-    ui_name   = "[UI_NAME]";
-    ui_size   = "[UI_SIZE]";
-    ui_color  = "[UI_COLOR]";
+    ui_name   = "home";
+    ui_size   = "24px";
+    ui_color  = "stroke";
     ui_parser = new DOMParser();
 
     constructor() {
@@ -40,4 +40,4 @@ class UiIconElement extends HTMLElement {
 
 }
   
-customElements.define("[COMPONENT_NAME]", UiIconElement);
+customElements.define("ui-icon", UiIconElement);

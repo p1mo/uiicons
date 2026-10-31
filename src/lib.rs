@@ -40,7 +40,6 @@ pub use holder::EmbededIcons;
 /// Icon Holder with all Icons ready to serve to your frontend
 macro_rules! embeded_icons {
     () => {
-
         EmbededIcons::load(include_bytes!(concat!(
             env!("OUT_DIR"),
             //"/../../../..",
@@ -48,20 +47,6 @@ macro_rules! embeded_icons {
             "/generated",
             "/uiicons.bin",
         )))
-    };
-}
-
-#[cfg(feature = "js")]
-#[macro_export]
-/// HTML Component using Vanilla Custom Component API ready to serve to your frontend
-macro_rules! embeded_js {
-    () => {
-        include_bytes!(concat!(
-            env!("OUT_DIR"),
-            "/../../../..",
-            "/uiicons/generated",
-            "/component.js",
-        ))
     };
 }
 
