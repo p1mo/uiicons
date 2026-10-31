@@ -19,7 +19,6 @@ type CheckPath = PathBuf;
 type SchemaPath = PathBuf;
 type BinaryPath = PathBuf;
 type ConfigPath = PathBuf;
-type JSPath = PathBuf;
 
 fn builder_paths() -> Result<
     (
@@ -28,7 +27,6 @@ fn builder_paths() -> Result<
         SchemaPath,
         BinaryPath,
         ConfigPath,
-        JSPath,
     ),
     Error,
 > {
@@ -63,8 +61,6 @@ fn builder_paths() -> Result<
         generated.join("uiicons.bin"),
         // [4] path to user settings uiicons.json
         project_path.join("uiicons.json"),
-        // [3] path to binary holding icons
-        generated.join("component.js"),
     ))
 }
 
@@ -118,7 +114,7 @@ fn clone_repos(
             }
 
             let old_sha = std::fs::read_to_string(&repo_sha_file)?;
-            let new_sha = latest_commit_sha(gh_owner, gh_repo).unwrap();
+            let new_sha = latest_commit_sha(gh_owner, gh_repo)?;
 
             if !repo_sha_file.exists() || old_sha != new_sha {
                 download_extract_svg_at_sha(gh_owner, gh_repo, &new_sha, &gh_repo_path).unwrap();
@@ -147,15 +143,6 @@ pub fn build() -> Result<(), Error> {
     clone_repos(&config, &buildpath.0, &buildpath.4, &buildpath.1)?;
 
     if has_changes(&buildpath.4, &buildpath.1)? {
-        #[cfg(feature = "js")]
-        {
-            let raw_js = include_str!("../../components/element.js")
-                .replace("[UI_NAME]", &config.component.icon)
-                .replace("[UI_SIZE]", &config.component.size)
-                .replace("[UI_COLOR]", &config.component.kind)
-                .replace("[COMPONENT_NAME]", &config.component.name);
-            std::fs::write(buildpath.5, raw_js)?;
-        }
 
         let mut map: HashMap<String, Vec<u8>> = HashMap::new();
 
