@@ -198,5 +198,8 @@ pub enum Error {
     SpeedyError(#[from] speedy::Error),
     // std errors
     #[error(transparent)]
+    Git2Error(#[from] git2::Error),
+    // std errors
+    #[error(transparent)]
     SourcesError(#[from] crate::utils::sources::Error),
 }
