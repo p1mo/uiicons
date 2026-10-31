@@ -17,8 +17,6 @@
 //!
 //! **main.rs**
 //! ```rust, no_run
-//! // Optional: with feature flag `js` serve component to frontend
-//! let js_bytes = uiicons::embeded_js();
 //! // icon holder
 //! let icons = uiicons::embeded_icons();
 //! // serve bytes to your front end

@@ -170,7 +170,12 @@ pub fn build() -> Result<(), Error> {
                 .into_iter()
                 .filter_map(Result::ok)
             {
-                if entry.path().ends_with(&filepath) {
+                let icon_path = entry
+                    .path()
+                    .display()
+                    .to_string()
+                    .replace("\\", "/");
+                if icon_path.ends_with(&filepath) {
                     map.insert(name.clone(), std::fs::read(entry.path())?);
                 }
             }

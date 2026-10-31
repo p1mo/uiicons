@@ -10,7 +10,6 @@
 
 ### Features
 + [X] Embeded
-+ [X] Vanilla Component (Custom Component API)
 + [X] Parallel Icon finder for Large Icon Sets
 
 ### Example
@@ -60,9 +59,6 @@ fn main() {
 **main.rs**
 ```rust
 fn main() {
-    // Optional: with feature flag `js` serve component to frontend
-    let js_bytes = uiicons::embeded_js();
-    
     // icon holder
     let icons = uiicons::embeded_icons();
 

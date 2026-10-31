@@ -1,6 +1,6 @@
 use std::{collections::HashMap, path::Path};
 
-use crate::utils::config::{Component, Config, Icon};
+use crate::utils::config::{Config, Icon};
 
 pub fn hasher(buffer: &[u8]) -> String {
     let mut hasher = blake3::Hasher::new();
@@ -21,12 +21,6 @@ pub fn dump_default(config_path: impl AsRef<Path>) -> std::io::Result<()> {
     if !config_path.as_ref().exists() {
         let schema = Config {
             schema: "gen/uiicons.schema.json".to_string(),
-            component: Component {
-                name: "ui-icon".into(),
-                icon: "home".into(),
-                size: "24px".into(),
-                kind: "stroke".into(),
-            },
             icons: {
                 let mut map = HashMap::new();
                 map.insert(
